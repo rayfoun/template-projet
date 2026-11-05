@@ -1,22 +1,50 @@
-# Secrets
+# --- Secrets ---
 .env
+.env.local
 *.key
 *.pem
+credentials*.json
+secrets/
 
-# Python
+# --- Claude Code : réglages personnels (les réglages partagés restent versionnés) ---
+.claude/settings.local.json
+
+# --- Python ---
 __pycache__/
-*.pyc
+*.py[cod]
 .venv/
 venv/
+.pytest_cache/
+.ruff_cache/
+.mypy_cache/
+*.egg-info/
+dist/
+build/
 
-# Node
+# --- Notebooks ---
+.ipynb_checkpoints/
+
+# --- Node ---
 node_modules/
+.next/
+.turbo/
 
-# Système / éditeur
-.DS_Store
-.idea/
-.vscode/
+# --- Données et modèles (à décrire dans un README plutôt qu'à versionner) ---
+data/raw/
+data/interim/
+models/*.bin
+models/*.pt
+models/*.safetensors
 
-# Sorties générées
+# --- Sorties générées ---
 output/
+logs/
 *.log
+
+# --- Système / éditeurs ---
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/*
+!.vscode/extensions.json
+!.vscode/settings.json
