@@ -59,7 +59,8 @@ Le meilleur total gagne. Si rien ne dépasse 6/9, fais un **spike**.
 
 ## Phase 1 et 2 : démarrer un projet (≈ 1 h 30) · `/cadrer`
 
-- [ ] Sur GitHub : **Use this template**, nom `AAAA-nom-du-projet`, dépôt **privé**, puis cloner et ouvrir dans VS Code.
+- [ ] Créer le dépôt depuis le template, nom `AAAA-nom-du-projet`, **privé** : sur GitHub avec **Use this template**, ou en une commande `gh repo create AAAA-nom-du-projet --template rayfoun/template-projet --private --clone`. Puis l'ouvrir dans VS Code.
+- [ ] Régler le dépôt pour n'autoriser que « Squash and merge » et supprimer les branches fusionnées : `gh repo edit --enable-squash-merge --enable-merge-commit=false --enable-rebase-merge=false --delete-branch-on-merge` (ou Settings → General → Pull Requests).
 - [ ] Regarder dans `recettes/` s'il existe une recette pour ce type de projet.
 - [ ] Remplir `PROJECT.md` (45 min). Les consignes sont dans le fichier.
 - [ ] **Test de sortie** : si la définition de terminé ne s'écrit pas, c'est encore une idée. Retour en Phase 0 ou spike.
@@ -69,7 +70,7 @@ Le meilleur total gagne. Si rien ne dépasse 6/9, fais un **spike**.
   - chaque inconnue de la rubrique « Risques » devient une tâche *comprendre* en M0.
 - [ ] Remplir la section **Projet** de `CLAUDE.md` à partir des réponses de « Comment ça marche concrètement ».
 - [ ] Écrire la **prochaine action** dans `NEXT.md`.
-- [ ] Commit sur `main` : `chore: cadrer le projet`, puis push. C'est **la seule fois** où l'on commite directement sur `main`.
+- [ ] Commiter le cadrage sur une branche `docs/cadrage` (`docs: cadrer le projet`), pull request, relecture, fusion. Même le cadrage passe par une PR : `main` ne reçoit jamais de commit direct.
 - [ ] Bloquer les sessions des 2 prochaines semaines dans ton agenda.
 
 **Une bonne tâche** commence par un verbe, a un résultat vérifiable et tient en une session.
@@ -95,7 +96,7 @@ Si une tâche te fait hésiter avant de la commencer, elle est trop grosse : dé
 - [ ] Une idée nouvelle surgit ? Une ligne dans « Plus tard » de `NEXT.md`, puis tu reviens à ta tâche.
 - [ ] Une notion nouvelle ? Une ligne dans `GLOSSAIRE.md`. Un choix non évident ? Une entrée dans `DECISIONS.md`.
 - [ ] Bloqué plus de 20 min ? Écrire le problème dans `NEXT.md`, puis découper, demander à l'IA ou changer de tâche.
-- [ ] Tâche finie : push, pull request vers `main`, **relire le diff entier**, « Squash and merge », supprimer la branche, cocher la tâche dans `NEXT.md`.
+- [ ] Tâche finie : cocher la tâche dans `NEXT.md`, push, pull request vers `main`, **relire le diff entier**, puis « Squash and merge ». Tu fusionnes toi-même sur GitHub, ou tu dis « ok » à l'IA qui fusionne pour toi.
 
 ### Sortir (5 min, non négociable, même si rien n'est fini) · `/fin`
 
@@ -122,7 +123,7 @@ Si une tâche te fait hésiter avant de la commencer, elle est trop grosse : dé
 1. **`main` marche toujours.** On ne travaille jamais directement dessus.
 2. **Une tâche = une branche** : `feat/…`, `fix/…`, `docs/…`, `exp/…`.
 3. **Un commit = une chose qui marche**, ou une sauvegarde `wip` de fin de session. Si le message a besoin d'un « et », fais deux commits.
-4. **Une branche finie = une pull request**, même seul. C'est là que tu relis ce que l'IA a produit.
+4. **Une branche finie = une pull request**, même seul. C'est là que tu relis ce que l'IA a produit. L'IA peut fusionner, mais seulement après ton « ok » explicite pour cette PR.
 5. **Squash and merge** : les `wip` disparaissent et `main` reste propre.
 
 Format des messages : `type: ce que ça fait`, à l'impératif, en moins de 70 caractères.
@@ -147,7 +148,10 @@ git switch -c feat/nom-court
 git add -p                      # relire chaque morceau avant de l'ajouter
 git commit -m "feat: ..."
 git push -u origin feat/nom-court
-# puis sur GitHub : pull request → relire → Squash and merge → supprimer la branche
+gh pr create --fill                     # ou sur GitHub : « Compare & pull request »
+# relire le diff sur GitHub, puis :
+gh pr merge --squash --delete-branch    # ou le bouton « Squash and merge »
+git switch main && git pull
 ```
 
 **Filets de sécurité**
