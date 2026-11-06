@@ -23,12 +23,13 @@ Il peut aussi remplir les fichiers lui-même : respecte ce qu'il a écrit, compl
 - Ne remplis jamais seul les rubriques de décision de `PROJECT.md` (Pourquoi, Définition de terminé, Hors périmètre) : propose des formulations, l'utilisateur valide.
 
 ## Git
-- Ne commite **jamais** sur `main`, sauf le commit de cadrage initial (`chore: cadrer le projet`) et seulement à la demande de l'utilisateur.
-- Ne fais **jamais** de merge, de `push --force`, de `reset --hard` ni de réécriture d'historique.
+- Ne commite **jamais** sur `main`, cadrage compris : tout passe par une branche et une pull request.
+- Ne fais **jamais** de `git merge` local, de `push --force`, de `reset --hard`, de réécriture d'historique, ni de suppression de dépôt.
 - Une tâche = une branche `type/nom-court` (`feat`, `fix`, `docs`, `refactor`, `test`, `chore`, `exp`).
 - Commits petits et fréquents, au format Conventional Commits en français : `type: description à l'impératif`, moins de 70 caractères.
 - N'ajoute que les fichiers liés à la tâche : vérifie `git status` avant chaque commit, jamais de `git add -A` à l'aveugle.
-- Tu peux pousser la branche de la tâche. La pull request est relue et fusionnée par l'utilisateur.
+- Tu pousses la branche et tu crées la pull request avec `gh pr create`, en suivant `.github/pull_request_template.md`.
+- **Fusion** : uniquement après un « ok » explicite de l'utilisateur pour **cette** pull request, donné dans la conversation. Avant de le demander, résume le diff (ce qui change, pourquoi, comment vérifier). Puis `gh pr merge --squash --delete-branch`, `git switch main` et `git pull`. Sans « ok », tu ne fusionnes pas, même si tout est vert.
 - Aucun secret dans le dépôt. Ne lis pas `.env` ; les noms de variables vont dans `.env.example`.
 
 ## Projet

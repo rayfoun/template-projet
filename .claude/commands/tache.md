@@ -22,6 +22,6 @@ Tâche : $ARGUMENTS
    - si tu bloques ou tournes en rond, arrête-toi et dis-le plutôt que d'insister.
 6. Quand le critère de réussite est atteint :
    - montre-moi un résumé du diff : ce qui change, pourquoi, comment je vérifie ;
-   - coche la tâche dans `NEXT.md` ;
-   - pousse la branche ;
-   - rappelle-moi d'ouvrir la pull request, de la relire et de faire « Squash and merge ». Si `gh` est disponible, propose de créer la PR toi-même.
+   - coche la tâche dans `NEXT.md` et commite ;
+   - pousse la branche et crée la pull request avec `gh pr create`, en donnant le lien ;
+   - demande-moi un « ok » pour fusionner. Après mon « ok » seulement : `gh pr merge --squash --delete-branch`, puis `git switch main` et `git pull`.

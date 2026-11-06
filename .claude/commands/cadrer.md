@@ -18,6 +18,9 @@ Déroulé :
 5. Découpe dans `NEXT.md` : milestones, tâches de 30 à 90 min (verbe + résultat vérifiable) pour M0 et M1 au moins. Chaque inconnue de « Risques » devient une tâche « comprendre » en M0.
 6. Remplis la section « Projet » de `CLAUDE.md` (installer, lancer, vérifier, livrer). Ce qui n'est pas encore connu devient une tâche de M0.
 7. Écris la prochaine action et mets la date dans `NEXT.md`.
-8. Montre-moi un récapitulatif court. Après ma validation, propose le commit `chore: cadrer le projet` sur `main` (seule exception à la règle), et attends mon accord avant de le faire.
+8. Montre-moi un récapitulatif court. Après ma validation :
+   - règle le dépôt GitHub avec la commande `gh repo edit` indiquée dans `GUIDE.md` (squash uniquement, suppression des branches fusionnées) ;
+   - crée la branche `docs/cadrage`, commite `docs: cadrer le projet`, pousse et ouvre la pull request ;
+   - fusionne seulement après mon « ok ».
 
 Ne crée aucun fichier de production (code, workflow…) pendant le cadrage.
